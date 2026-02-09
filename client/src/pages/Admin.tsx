@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -13,7 +12,6 @@ import { trpc } from "@/lib/trpc";
  * Painel administrativo para fotógrafos gerenciarem clientes e galerias
  */
 export default function Admin() {
-  const { user, loading: authLoading } = useAuth();
   const [activeTab, setActiveTab] = useState("galleries");
 
   // Queries
@@ -64,26 +62,7 @@ export default function Admin() {
     }
   };
 
-  if (authLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800">
-        <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
-      </div>
-    );
-  }
 
-  if (!user) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800">
-        <Card className="bg-slate-800 border-slate-700">
-          <CardHeader>
-            <CardTitle className="text-white">Acesso Negado</CardTitle>
-            <CardDescription className="text-slate-400">Você precisa estar autenticado para acessar o painel administrativo.</CardDescription>
-          </CardHeader>
-        </Card>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800">
@@ -93,7 +72,7 @@ export default function Admin() {
           <div className="flex justify-between items-center">
             <div>
               <h1 className="text-2xl font-bold text-white">Painel Administrativo</h1>
-              <p className="text-sm text-slate-400 mt-1">Bem-vindo, {user.name || user.email}</p>
+              <p className="text-sm text-slate-400 mt-1">Gerencie suas galerias e clientes</p>
             </div>
             <Button variant="outline" className="border-slate-600 text-white hover:bg-slate-800">Sair</Button>
           </div>
