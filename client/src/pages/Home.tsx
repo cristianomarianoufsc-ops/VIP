@@ -39,14 +39,9 @@ export default function Home() {
               Proteja suas imagens profissionais com múltiplas camadas de segurança. Bloqueie PrintScreen, 
               clique direito, download e muito mais. Seus clientes verão as fotos, mas não conseguirão salvá-las.
             </p>
-            <div className="flex gap-4">
-              <Button size="lg" onClick={() => setLocation("/admin")} className="bg-blue-600 hover:bg-blue-700">
-                Acessar Painel
-              </Button>
-              <Button size="lg" variant="outline" className="border-slate-600 text-white hover:bg-slate-800">
-                Ver Demo
-              </Button>
-            </div>
+            <Button size="lg" onClick={() => setLocation("/admin")} className="bg-blue-600 hover:bg-blue-700 w-fit">
+              Acessar Painel
+            </Button>
           </div>
 
           {/* Feature Preview */}
@@ -161,9 +156,7 @@ export default function Home() {
           <p className="text-xl text-blue-100 mb-8">
             Comece agora e compartilhe suas galerias com total segurança
           </p>
-          <Button size="lg" onClick={() => setLocation("/admin")} className="bg-white text-blue-600 hover:bg-slate-100">
-            Ir para o Painel
-          </Button>
+
         </div>
       </section>
 
