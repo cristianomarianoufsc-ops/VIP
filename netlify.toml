@@ -1,6 +1,10 @@
 [build]
   command = "pnpm run build"
+  functions = "netlify/functions"
   publish = "dist/public"
+
+[functions]
+  external_node_modules = ["@tailwindcss/oxide", "lightningcss", "@babel/preset-typescript"]
 
 [[redirects]]
   from = "/api/trpc/*"
