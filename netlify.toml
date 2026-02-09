@@ -2,7 +2,10 @@
   command = "pnpm run build"
   publish = "dist/public"
 
-
+[[redirects]]
+  from = "/api/trpc/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
 
 [[redirects]]
   from = "/api/*"
@@ -11,5 +14,5 @@
 
 [[redirects]]
   from = "/*"
-  to = "/.netlify/functions/api"
+  to = "/index.html"
   status = 200
