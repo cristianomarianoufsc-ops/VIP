@@ -1,25 +1,14 @@
 import React from "react";
-import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Lock, Image, Share2, Zap, Shield, Eye } from "lucide-react";
 import { useLocation } from "wouter";
-import { getLoginUrl } from "@/const";
 
 /**
  * Página inicial - Landing page para o VIP
  */
 export default function Home() {
-  const { user, loading } = useAuth();
   const [, setLocation] = useLocation();
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800">
-        <div className="text-white">Carregando...</div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
@@ -32,20 +21,9 @@ export default function Home() {
             <span className="text-sm text-slate-400">Visualizador de Imagens Protegido</span>
           </div>
           <div className="flex gap-3">
-            {user ? (
-              <>
-                <Button variant="outline" onClick={() => setLocation("/admin")}>
-                  Painel Admin
-                </Button>
-                <Button onClick={() => setLocation("/admin")}>
-                  Minha Conta
-                </Button>
-              </>
-            ) : (
-              <Button onClick={() => (window.location.href = getLoginUrl())}>
-                Entrar
-              </Button>
-            )}
+            <Button variant="outline" onClick={() => setLocation("/admin")}>
+              Painel Admin
+            </Button>
           </div>
         </div>
       </nav>
@@ -62,15 +40,9 @@ export default function Home() {
               clique direito, download e muito mais. Seus clientes verão as fotos, mas não conseguirão salvá-las.
             </p>
             <div className="flex gap-4">
-              {user ? (
-                <Button size="lg" onClick={() => setLocation("/admin")} className="bg-blue-600 hover:bg-blue-700">
-                  Acessar Painel
-                </Button>
-              ) : (
-                <Button size="lg" onClick={() => (window.location.href = getLoginUrl())} className="bg-blue-600 hover:bg-blue-700">
-                  Começar Agora
-                </Button>
-              )}
+              <Button size="lg" onClick={() => setLocation("/admin")} className="bg-blue-600 hover:bg-blue-700">
+                Acessar Painel
+              </Button>
               <Button size="lg" variant="outline" className="border-slate-600 text-white hover:bg-slate-800">
                 Ver Demo
               </Button>
@@ -189,15 +161,9 @@ export default function Home() {
           <p className="text-xl text-blue-100 mb-8">
             Comece agora e compartilhe suas galerias com total segurança
           </p>
-          {user ? (
-            <Button size="lg" onClick={() => setLocation("/admin")} className="bg-white text-blue-600 hover:bg-slate-100">
-              Ir para o Painel
-            </Button>
-          ) : (
-            <Button size="lg" onClick={() => (window.location.href = getLoginUrl())} className="bg-white text-blue-600 hover:bg-slate-100">
-              Entrar Agora
-            </Button>
-          )}
+          <Button size="lg" onClick={() => setLocation("/admin")} className="bg-white text-blue-600 hover:bg-slate-100">
+            Ir para o Painel
+          </Button>
         </div>
       </section>
 
